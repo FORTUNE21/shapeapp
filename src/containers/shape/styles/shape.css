@@ -1,0 +1,230 @@
+@keyframes animateShapeBody {
+    0% {
+        /* background-color: rgba(5, 5, 5, 1); */
+        opacity: 0.5;
+        color: white;
+    }
+    30% {
+        /* background-color: rgba(18, 83, 119, 0.1); */
+        opacity: 0;
+    }
+    70% {
+        opacity: 0.5;
+        /* background-color: rgba(18, 83, 119, 0.75); */
+    }
+    100% {
+        /* background-color: rgba(5, 5, 5, 0.1); */
+        opacity: 1;
+    }
+}
+
+.shapeBody {
+    background-color: white;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    height: fit-content;
+    margin-top: 8vh;
+    border-radius: 1em;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    -o-border-radius: 1em;
+    box-sizing: content-box;
+    border: 1px solid gray;
+    color: rgba(5, 5, 5, 0.7);
+    /* animation-name: animateShapeBody;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out; */
+    /* display: none; */
+}
+
+.shapeBody--fix {
+    height: 80vh;
+    margin-top: 5vh;
+    animation-name: animateShapeBody;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+
+.cancelIcon {
+    display: flex;
+    margin-left: 80%;
+    margin-top: -2.5em;
+    cursor: pointer;
+    /* float: right; */
+}
+
+.shape__result {
+    height: 43vh;
+    width: 100%;
+    /* margin-top: 10em; */
+    background-color: rgba(5, 5, 5, 0.1);
+    animation-name: animateShapeBody;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+}
+
+.redChoose,
+.blueChoose,
+.greenChoose,
+.yellowChoose,
+.blackChoose,
+.whiteChoose {
+    background-color: red;
+    padding: 1em 1em;
+    text-align: center;
+    display: inline;
+    color: white;
+    cursor: pointer;
+}
+
+.greenChoose {
+    background-color: green;
+}
+
+.yellowChoose {
+    background-color: yellow;
+}
+
+.blueChoose {
+    background-color: blue;
+}
+
+.whiteChoose {
+    background-color: white;
+    color: black;
+}
+
+.blackChoose {
+    background-color: black;
+}
+
+.chooseColor {
+    margin-left: 1em;
+    margin-top: 0;
+}
+
+.the__shape {
+    margin-left: 5%;
+    width: 90%;
+    height: 100%;
+    background-color: rgba(5, 5, 5, 0.1);
+}
+
+
+/* .shape {} */
+
+.welcome {
+    margin-left: 1em;
+    margin-top: 2em;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.error {
+    margin-left: 5%;
+    margin-right: 5%;
+    color: red;
+}
+
+.welcome__text {
+    width: 90%;
+    height: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.shape__input__text {
+    /* margin-left: 1em; */
+    margin-top: 0.5em;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.shape__input {
+    width: 90%;
+    height: 3em;
+    border: none;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 2px rgba(5, 5, 5, 0.3), 1px 1px 1px rgba(5, 5, 5, 0.3);
+    transition: border-bottom 0.5s;
+    -webkit-transition: border-bottom 0.5s;
+    -moz-transition: border-bottom 0.5s;
+    -ms-transition: border-bottom 0.5s;
+    -o-transition: border-bottom 0.5s;
+}
+
+.shape__input:focus {
+    border-bottom: 1px solid rgba(5, 5, 5, 0.7);
+}
+
+.shape__select {
+    width: 90%;
+    height: 3em;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: none;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 2px rgba(5, 5, 5, 0.3), 1px 1px 1px rgba(5, 5, 5, 0.3);
+}
+
+.shape__input__container {
+    /*background-color: rgba(5, 5, 5, 0.7);
+    */
+    width: 90%;
+    height: 7em;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+    -moz-border-radius: 0.5em;
+    -ms-border-radius: 0.5em;
+    -o-border-radius: 0.5em;
+    border: 1px solid rgba(5, 5, 5, 0.1);
+    /*border-bottom: 2px solid rgba(5, 5, 5, 0.7);
+    */
+    margin-bottom: 2em;
+}
+
+.shape__create__btn__container {
+    margin-left: 5%;
+    margin-bottom: 2em;
+}
+
+.shape__create__btn {
+    height: 2.5em;
+    color: white;
+    width: 7em;
+    background-color: rgba(5, 5, 5, 0.7);
+    border-bottom: 1px solid rgba(5, 5, 5, 0.1);
+    border-radius: 0.2em;
+    -webkit-border-radius: 0.2em;
+    -moz-border-radius: 0.2em;
+    -ms-border-radius: 0.2em;
+    -o-border-radius: 0.2em;
+    transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -ms-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+}
+
+.shape__create__btn:hover {
+    background-color: rgba(5, 5, 5, 1);
+}
+
+@media screen and (max-width: 920px) {
+    .shapeBody {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .shapeBody {
+        width: 90%;
+    }
+}
