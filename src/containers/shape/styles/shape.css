@@ -193,6 +193,7 @@
 .shape__create__btn__container {
     margin-left: 5%;
     margin-bottom: 2em;
+    display: inline-block;
 }
 
 .shape__create__btn {
@@ -215,6 +216,20 @@
 
 .shape__create__btn:hover {
     background-color: rgba(5, 5, 5, 1);
+}
+
+.viewLast__container {
+    /* display: inline-block; */
+    float: right;
+    margin-right: 5%;
+    margin-top: 0.5em;
+}
+
+.viewLast {
+    color: rgba(5, 5, 5, 0.7);
+    font-size: 0.8em;
+    text-decoration: solid rgba(5, 5, 5, 1) underline;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 920px) {

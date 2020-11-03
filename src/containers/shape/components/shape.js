@@ -1,10 +1,49 @@
 import React, { useState } from "react";
 
+import useCreateShape from "../hooks/useCreateShape.js";
+
 import "../styles/shape.css";
+
+const CallShape = (
+  shapeSize,
+
+  setShapeSize,
+
+  shapeType,
+
+  setShapeType,
+
+  shapeAndInput,
+
+  setShapeAndInput,
+
+  setShapeProperties,
+
+  setThrowError
+) => {
+  return useCreateShape(
+    shapeSize,
+
+    setShapeSize,
+
+    shapeType,
+
+    setShapeType,
+
+    shapeAndInput,
+
+    setShapeAndInput,
+
+    setShapeProperties,
+
+    setThrowError
+  );
+};
 
 const Shape = () => {
   const [shapeAndInput, setShapeAndInput] = useState({
     showInputHideShape: true,
+
     showShapeHideInput: false
   });
 
@@ -16,97 +55,79 @@ const Shape = () => {
 
   const [shapeProperties, setShapeProperties] = useState({
     shapeSize: 0,
-    shapeType: "Triangle",
+
+    shapeType: 3,
+
     coordinates: "",
+
     shapeColor: "black",
+
     isPolygon: true,
+
     isCircle: false
   });
 
-  const GetCoordinates = (size, number) => {
-    var X, Y, angle, i;
-
-    var coords = "";
-
-    const radius = size;
-
-    const centreX = 140;
-
-    const centreY = 130;
-
-    for (i = 0; i < number; i++) {
-      angle = (2 * Math.PI) / number;
-
-      X = centreX + radius * Math.cos(i * angle);
-
-      Y = centreY + radius * Math.sin(i * angle);
-
-      coords = coords + X + "," + Y + " ";
-    }
-
-    return coords;
-  };
-
   const CreateShape = () => {
-    if (shapeSize >= 5 && shapeSize <= 130) {
-      setThrowError("");
+    return CallShape(
+      shapeSize,
 
-      if (shapeAndInput.showInputHideShape === true) {
-        setShapeAndInput({
-          showInputHideShape: false,
+      setShapeSize,
 
-          showShapeHideInput: true
-        });
+      shapeType,
 
-        if (shapeType === "Circle") {
-          setShapeProperties({
-            shapeSize: shapeSize,
+      setShapeType,
 
-            shapeCoords: shapeSize,
+      shapeAndInput,
 
-            shapeType: "Circle",
+      setShapeAndInput,
 
-            shapeColor: "black",
+      setShapeProperties,
 
-            isPolygon: false,
+      setThrowError
+    );
+  };
 
-            isCircle: true
-          });
-        } else {
-          const coordinates = GetCoordinates(
-            Number.parseFloat(shapeSize),
+  const ReCreateShape = () => {
+    if (localStorage.getItem("LastShape") !== null) {
+      const lastShape = JSON.parse(localStorage.getItem("LastShape"));
 
-            Number.parseFloat(shapeType)
-          );
+      return CallShape(
+        lastShape.shapeSize,
 
-          setShapeProperties({
-            shapeSize: shapeSize,
+        setShapeSize,
 
-            shapeCoords: coordinates,
+        lastShape.shapeType,
 
-            shapeType: shapeType,
+        setShapeType,
 
-            shapeColor: "black",
+        shapeAndInput,
 
-            isPolygon: true,
+        setShapeAndInput,
 
-            isCircle: false
-          });
-        }
-      } else {
-        setShapeAndInput({
-          showInputHideShape: true,
+        setShapeProperties,
 
-          showShapeHideInput: false
-        });
-        setShapeSize(0);
-        setShapeType(3);
-      }
+        setThrowError
+      );
     } else {
-      setThrowError("Ops! The shape length must be between 5 and 130");
+      setThrowError("Ops! You don't have any recently created shape");
     }
   };
 
+  const CloseShape = () => {
+    if (shapeAndInput.showInputHideShape === true) {
+      setShapeAndInput({
+        showInputHideShape: false,
+
+        showShapeHideInput: true
+      });
+    }else{
+      setShapeAndInput({
+        showInputHideShape: true,
+
+        showShapeHideInput: false
+      });
+    }
+  }
   const UpdateColor = color => {
     setShapeProperties({
       shapeSize: shapeProperties.shapeSize,
@@ -196,6 +217,15 @@ const Shape = () => {
             <button className="shape__create__btn" onClick={CreateShape}>
               CREATE
             </button>
+
+            {/* <button className="shape__create__btn" onClick={CreateShape}>
+              CREATE
+            </button> */}
+          </div>
+          <div className="viewLast__container">
+            <span className="viewLast" onClick={ReCreateShape}>
+              View Last Shape
+            </span>
           </div>
         </div>
       )}
@@ -204,7 +234,7 @@ const Shape = () => {
         <div className="shapeBody shapeBody--fix">
           <h3 className="welcome">Voila!</h3>
 
-          <h4 className="cancelIcon" onClick={CreateShape}>
+          <h4 className="cancelIcon" onClick={CloseShape}>
             Cancel
           </h4>
 

@@ -1,39 +1,22 @@
+import useGetCoordinates from "./useGetCoordinates";
+
 const GetCoordinates = (size, number) => {
-  var X, Y, angle, i;
-
-  var coords = "";
-
-  const radius = size;
-
-  const centreX = 140;
-
-  const centreY = 130;
-
-  for (i = 0; i < number; i++) {
-    angle = (2 * Math.PI) / number;
-
-    X = centreX + radius * Math.cos(i * angle);
-
-    Y = centreY + radius * Math.sin(i * angle);
-
-    coords = coords + X + "," + Y + " ";
-  }
-
-  return coords;
+  return useGetCoordinates(size, number);
 };
 
-const CreateShape = (
+const useCreateShape = (
   shapeSize,
+  setShapeSize,
   shapeType,
-  setShapeProperties,
-  setThrowError,
+  setShapeType,
   shapeAndInput,
   setShapeAndInput,
-  setShapeSize,
-  setShapeType
+  setShapeProperties,
+  setThrowError
 ) => {
   if (shapeSize >= 5 && shapeSize <= 130) {
     setThrowError("");
+    var theShape;
 
     if (shapeAndInput.showInputHideShape === true) {
       setShapeAndInput({
@@ -43,7 +26,7 @@ const CreateShape = (
       });
 
       if (shapeType === "Circle") {
-        setShapeProperties({
+        theShape = {
           shapeSize: shapeSize,
 
           shapeCoords: shapeSize,
@@ -55,7 +38,9 @@ const CreateShape = (
           isPolygon: false,
 
           isCircle: true
-        });
+        };
+
+        setShapeProperties(theShape);
       } else {
         const coordinates = GetCoordinates(
           Number.parseFloat(shapeSize),
@@ -63,7 +48,7 @@ const CreateShape = (
           Number.parseFloat(shapeType)
         );
 
-        setShapeProperties({
+        theShape = {
           shapeSize: shapeSize,
 
           shapeCoords: coordinates,
@@ -75,8 +60,12 @@ const CreateShape = (
           isPolygon: true,
 
           isCircle: false
-        });
+        };
+
+        setShapeProperties(theShape);
       }
+
+      localStorage.setItem("LastShape", JSON.stringify(theShape));
     } else {
       setShapeAndInput({
         showInputHideShape: true,
@@ -87,8 +76,8 @@ const CreateShape = (
       setShapeType(3);
     }
   } else {
-    setThrowError("Ops! The shape length must be between 10 and 100");
+    setThrowError("Ops! The shape length must be between 5 and 130");
   }
 };
 
-module.exports.CreateShape = CreateShape;
+export default useCreateShape;
